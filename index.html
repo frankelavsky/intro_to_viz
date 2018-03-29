@@ -37,12 +37,23 @@
 		</script>
 	-->
 		<script>
-		function autoResize(i)
-			{
-			    var iframeHeight=
-			    (i).contentWindow.document.body.scrollHeight;
-			    (i).height=iframeHeight+20;
-			}
+			function play() { 
+				function currentvid() {
+					return document.getElementsByClassName('present')[0].getElementsByTagName('video')[0]
+				}
+				function checkligo() {
+					return document.getElementsByClassName('present')[0].getElementsByTagName('iframe')[0]
+				}
+				var current = currentvid();
+				var ligo = checkligo();
+				if (current) {
+
+					setTimeout(function(){ current.play() }, 1500);
+
+				} else if (ligo) {
+					ligo.src = 'https://ligo.northwestern.edu/media/mass-plot/index.html'
+				}
+			} 
 		</script>
 
 	</head>
@@ -100,42 +111,42 @@
 				<section>
 					<h1>Proximity</h1>
 					<p>(creates categories)</p>
-					<video src="files/1proximity.mp4" type="video/mp4">
+					<video src="files/1proximity.mp4" type="video/mp4" controls>
 				</section>
 				<section>
 					<h1>Similarity</h1>
 					<p>(creates subcategories)</p>
-					<video src="files/2similarity.mp4" type="video/mp4">
+					<video src="files/2similarity.mp4" type="video/mp4" controls>
 				</section>
 				<section>
 					<h1>Contrast</h1>
 					<p>(creates focus)</p>
-					<video src="files/3contrast.mp4" type="video/mp4">
+					<video src="files/3contrast.mp4" type="video/mp4" controls>
 				</section>
 				<section>
 					<h1>Commonality</h1>
 					<p>(creates connections)</p>
-					<video src="files/4commonality.mp4" type="video/mp4">
+					<video src="files/4commonality.mp4" type="video/mp4" controls>
 				</section>
 				<section>
 					<h1>Continuity</h1>
 					<p>(creates flow)</p>
-					<video src="files/5continuity.mp4" type="video/mp4">
+					<video src="files/5continuity.mp4" type="video/mp4" controls>
 				</section>
 				<section>
 					<h1>Closure</h1>
 					<p>(creates suggestion)</p>
-					<video src="files/6closure.mp4" type="video/mp4">
+					<video src="files/6closure.mp4" type="video/mp4" controls>
 				</section>
 				<section>
 					<h1>Figure-Ground</h1>
 					<p>(creates entry-point and layers)</p>
-					<video src="files/7figure_ground.mp4" type="video/mp4">
+					<video src="files/7figure_ground.mp4" type="video/mp4" controls>
 				</section>
 				<section>
 					<h1>Common Fate</h1>
 					<p>(creates meta-categories)</p>
-					<video src="files/8common_fate.mp4" type="video/mp4">
+					<video src="files/8common_fate.mp4" type="video/mp4" controls>
 				</section>
 				<section>
 					<h1>Quick thanks to Pablo Stanley</h1>
@@ -202,7 +213,7 @@
 </a></p>
 				</section>
 				<section>
-					<iframe src='https://ligo.northwestern.edu/media/mass-plot/index.html' onload='autoResize(this)' width='100%' height='950px' ></iframe>
+					<iframe src='' width='100%' height='950px' ></iframe>
 				</section>
 				<section>
 					<h1>Whew, what a rush.</h1>
@@ -275,12 +286,11 @@
 
 			//Remove the very heavy title slide (& slightly heavy end slide)
 			//by slides before and after that have no JS scripts running by themselves
-			/*
-			Reveal.addEventListener( 'removeSVGs', function() {
-		    	d3.select('#title-slide #titleSlide svg').remove();
-		    	d3.select('#end-slide #endSlide svg').remove();
+			
+			Reveal.addEventListener( 'slidechanged', function() {
+		    	play()
 			} );
-			*/
+			
 
 		</script>
 
